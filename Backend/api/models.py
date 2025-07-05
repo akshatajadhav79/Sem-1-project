@@ -10,3 +10,7 @@ class stud(models.Model):
     sname = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     
+# from mongoengine import Document, StringField
+
+# class MyModel(Document):
+#     name = StringField(required=True)

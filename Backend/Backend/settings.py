@@ -51,9 +51,9 @@ CORS_ALLOWED_ORIGINS = [
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,7 +63,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Backend.urls'
 
-TEMPLATES_DIR=os.path.join(BASE_DIR,'Templates')
+TEMPLATES_DIR=os.path.join(BASE_DIR,'frontend/build')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 #     'default': {
 #         'ENGINE': 'djongo',
 #         'NAME': 'mypro',  # Replace with your MongoDB database name
-#         # 'ENFORCE_SCHEMA': False,
 #         'CLIENT': {
 #             'host': 'mongodb://localhost:27017/',  # Adjust if needed
+#             # Add any additional MongoDB options here
 #         }
 #     }
 # }
@@ -148,17 +148,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_RENDER_CLASSES' : ('rest_framework.renders.JSONRenderer',)
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDER_CLASSES' : ('rest_framework.renders.JSONRenderer',)
     
-}
+# }
 
 #For ONly Read purpose Add class to not give access to modify
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-    'DEFAULT_RENDERER_CLASSES':[
-        'rest_framework.renderers.JSONRenderer',
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES':[
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ],
+#     'DEFAULT_RENDERER_CLASSES':[
+#         'rest_framework.renderers.JSONRenderer',
+#     ]
+# }
+
+
+#  to connect mongoDB
+# settings.py
+# from mongoengine import connect
+
+# connect('mypro', host='mongodb://localhost:27017/')

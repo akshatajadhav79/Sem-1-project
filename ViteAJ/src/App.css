@@ -1,0 +1,11 @@
+h2{
+  text-align: center;
+}
+ul{
+  flex: auto;
+}
+li{
+  padding: 8px;
+  width: 490px;
+  height: 200px;
+}
